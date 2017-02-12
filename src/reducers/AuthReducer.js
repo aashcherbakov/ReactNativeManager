@@ -6,7 +6,7 @@ import {
   LOGIN_USER
 } from '../actions/types';
 
-const initialState = { 
+const INITIAL_STATE = { 
   email: '', 
   password: '',
   user: null,
@@ -14,16 +14,17 @@ const initialState = {
   loading: false
 }
 
-export default (state = initialState, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case EMAIL_CHANGED:
     return { ...state, email: action.payload };
   case PASSWORD_CHANGED:
     return { ...state, password: action.payload };
   case LOGIN_USER_SUCCESS:
-    return { ...state, ...initialState, user: action.payload };
+    return { ...state, ...INITIAL_STATE, user: action.payload };
   case LOGIN_USER_FAIL:
-    return { ...state, 
+    return { 
+      ...state, 
       error: 'Authentication failed', 
       password: '', 
       loading: false 
